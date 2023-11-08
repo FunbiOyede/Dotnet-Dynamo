@@ -7,10 +7,10 @@ namespace Customer.API.Services
 	{
 
         Task<List<CustomersDTO>> GetAllCustomers(CustomersDTO customer);
-        Task<CustomersDTO> GetCustomer(Guid id);
-        Task<bool> DeleteCustomer(Guid id);
-        Task<bool> UpdateCustomer(CustomersDTO customer);
-        Task<bool> CreateCustomer(CustomersDTO customer);
+        Task<ServiceResponse> GetCustomer(Guid id);
+        Task<ServiceResponse> DeleteCustomer(Guid id);
+        Task<ServiceResponse> UpdateCustomer(CustomersDTO customer);
+        Task<ServiceResponse> CreateCustomer(CustomersDTO customer);
     }
 }
 

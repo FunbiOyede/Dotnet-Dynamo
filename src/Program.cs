@@ -1,3 +1,4 @@
+using Amazon.DynamoDBv2;
 using Customer.API.Repositories;
 using Customer.API.Services;
 
@@ -11,6 +12,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<ICustomerRepository, CustomerRepository>();
 builder.Services.AddSingleton<ICustomerService, CustomerService>();
+builder.Services.AddSingleton<IAmazonDynamoDB, AmazonDynamoDBClient>();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 var app = builder.Build();

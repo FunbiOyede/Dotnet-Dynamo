@@ -4,6 +4,7 @@
     <TargetFramework>net7.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>a939b83a-499b-456d-b257-8ca9a1f9d5d1</UserSecretsId>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'https' " />
@@ -12,7 +13,7 @@
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.11" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
-    <PackageReference Include="AWSSDK.DynamoDBv2" Version="3.7.203.4" />
+    <PackageReference Include="AWSSDK.DynamoDBv2" Version="3.7.203.5" />
     <PackageReference Include="AutoMapper" Version="12.0.1" />
   </ItemGroup>
 
@@ -22,6 +23,7 @@
     <None Remove="Mapping\" />
     <None Remove="Contracts\" />
     <None Remove="Model\" />
+    <None Remove="Constants\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Services\" />
@@ -29,5 +31,6 @@
     <Folder Include="Mapping\" />
     <Folder Include="Contracts\" />
     <Folder Include="Model\" />
+    <Folder Include="Constants\" />
   </ItemGroup>
 </Project>
