@@ -26,10 +26,7 @@ namespace Customer.API.Services
 
             var createdUser = await _customerRepository.CreateAsync(customerData);
 
-            if (!createdUser)
-            {
-                return null;
-            }
+            if (!createdUser) return null;
 
 
             var response = new ServiceResponse
@@ -82,10 +79,10 @@ namespace Customer.API.Services
         }
 
 
-        public async Task<ServiceResponse> UpdateCustomer(CustomersDTO customerDto)
+        public async Task<ServiceResponse?> UpdateCustomer(Guid id, CustomersDTO customerDto)
         {
             var customerData = _mapper.Map<CustomerModel>(customerDto);
-
+            customerData.id = id;
             var customer = await _customerRepository.UpdateAsync(customerData);
 
             if (!customer) return null;

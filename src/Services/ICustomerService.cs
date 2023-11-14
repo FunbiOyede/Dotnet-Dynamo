@@ -9,7 +9,7 @@ namespace Customer.API.Services
         Task<List<CustomersDTO>> GetAllCustomers(CustomersDTO customer);
         Task<ServiceResponse> GetCustomer(Guid id);
         Task<ServiceResponse> DeleteCustomer(Guid id);
-        Task<ServiceResponse> UpdateCustomer(CustomersDTO customer);
+        Task<ServiceResponse> UpdateCustomer(Guid id, CustomersDTO customer);
         Task<ServiceResponse> CreateCustomer(CustomersDTO customer);
     }
 }

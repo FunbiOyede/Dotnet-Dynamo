@@ -48,9 +48,9 @@ namespace Customer.API.Controllers
 
         // PUT api/values/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateCutomer(int id, [FromBody] CustomersDTO customer)
+        public async Task<IActionResult> UpdateCutomer(Guid id, [FromBody] CustomersDTO customer)
         {
-            var response = await _customerService.UpdateCustomer(customer);
+            var response = await _customerService.UpdateCustomer(id, customer);
             if (!response.status) return BadRequest();
 
             return Ok(new { Message = response.message, Data = response.data });
