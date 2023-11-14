@@ -54,7 +54,7 @@ namespace Customer.API.Repositories
 
             var itemAsDocument = Document.FromAttributeMap(res.Item);
 
-            return JsonSerializer.Deserialize<CustomerModel>(itemAsDocument);
+            return JsonSerializer.Deserialize<CustomerModel>(itemAsDocument.ToJson());
         }
 
         public async Task<bool> UpdateAsync(CustomerModel customer)

@@ -14,6 +14,12 @@ namespace Customer.API.Mapping
                 .ForMember(dest => dest.Username, opt => opt.MapFrom(src => src.Username))
                 .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Email))
                 .ForMember(dest => dest.DateOfBirth, opt => opt.MapFrom(src => src.DateOfBirth));
+
+            CreateMap<CustomerModel, CustomersDTO>()
+               .ForMember(dest => dest.FullName, opt => opt.MapFrom(src => src.FullName))
+               .ForMember(dest => dest.Username, opt => opt.MapFrom(src => src.Username))
+               .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Email))
+               .ForMember(dest => dest.DateOfBirth, opt => opt.MapFrom(src => src.DateOfBirth));
         }
     }
 }
