@@ -1,4 +1,5 @@
 ﻿using System;
+using Amazon.DynamoDBv2.Model;
 using AutoMapper;
 using Customer.API.Contracts;
 using Customer.API.Model;
@@ -52,12 +53,26 @@ namespace Customer.API.Services
                 data = null
             };
 
-            return response; ;
+            return response;
         }
 
-        public Task<List<CustomersDTO>> GetAllCustomers(CustomersDTO customer)
+        public async Task<ServiceResponse> GetAllCustomers()
         {
-            throw new NotImplementedException();
+            
+            var customers = await _customerRepository.GetAllAsync();
+
+            if (customers is null) return null;
+
+            var customerData = _mapper.Map<IEnumerable<CustomersDTO>>(customers);
+            var response = new ServiceResponse
+            {
+                status = true,
+                message = "All Item fetch successfully",
+                data = customerData
+            };
+
+            return response;
+
         }
 
         public async Task<ServiceResponse> GetCustomer(Guid id)

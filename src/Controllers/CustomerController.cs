@@ -19,11 +19,15 @@ namespace Customer.API.Controllers
             _customerService = customer;
         }
         // GET: api/values
-        //[HttpGet]
-        //public async Task<IActionResult> GetAllCustomer()
-        //{
+        [HttpGet("/customers")]
+        public async Task<IActionResult> GetAllCustomer()
+        {
+            var response = await _customerService.GetAllCustomers();
 
-        //}
+            if (!response.status) return NoContent();
+
+            return Ok(new { Message = response.message, Data = response.data });
+        }
 
         // GET api/values/5
         [HttpGet("{id}")]

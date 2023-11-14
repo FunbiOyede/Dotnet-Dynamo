@@ -39,9 +39,24 @@ namespace Customer.API.Repositories
             return res.HttpStatusCode == HttpStatusCode.OK;
         }
 
-        public Task<IEnumerable<CustomerModel>> GetAllAsync()
+        public async Task<IEnumerable<CustomerModel>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            //do not implement this in a large project
+            // For more information in scans read https://www.dynamodbguide.com/scans/
+            //https://medium.com/shelf-io-engineering/how-to-scan-a-23-gb-dynamodb-table-in-1-minute-110730879e2b
+
+            var scanRequest = new ScanRequest
+            {
+                TableName = constant.TableName
+            };
+
+            var response = await _dynamoDB.ScanAsync(scanRequest);
+            return response.Items.Select(item =>
+            {
+                var json = Document.FromAttributeMap(item).ToJson();
+                return JsonSerializer.Deserialize<CustomerModel>(json);
+            });
+
         }
 
         public async Task<CustomerModel?> GetAsync(Guid id)
